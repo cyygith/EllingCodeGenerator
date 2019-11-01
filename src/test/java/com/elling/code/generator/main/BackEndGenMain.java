@@ -1,6 +1,8 @@
 package com.elling.code.generator.main;
 
 import com.elling.code.generator.service.impl.ControllerGenerator;
+import com.elling.code.generator.service.impl.MapperGenerator;
+import com.elling.code.generator.service.impl.MapperXmlGenerator;
 import com.elling.code.generator.service.impl.ModelAndMapperGenerator;
 import com.elling.code.generator.service.impl.ServiceGenerator;
 import com.elling.code.utils.CodeUtils;
@@ -13,7 +15,7 @@ public class BackEndGenMain {
 	 */
 	public static void main(String[] args) {
 		
-		String[] tableNames = new String[] {"sys_user"};
+		String[] tableNames = new String[] {"sys_role"};
 		
 		for(String tableName:tableNames) {
 			String sign = CodeUtils.getTableNameSplit(tableName)[1];
@@ -21,6 +23,9 @@ public class BackEndGenMain {
 			new ModelAndMapperGenerator().genCode(tableName, modelName, sign);//生成model页面相关
 			new ServiceGenerator().genCode(tableName, modelName, sign);//生成service、serviceImpl页面相关
 			new ControllerGenerator().genCode(tableName, modelName, sign);//生成controller页面相关
+			new MapperGenerator().genCode(tableName, modelName, sign);//生成Mapper文件
+			new MapperXmlGenerator().genCode(tableName, modelName, sign);//生成Mapper.xml文件
+			
 		}
 		System.out.println("执行成功");
 		

@@ -93,6 +93,22 @@ public class ${modelNameUpperCamel}Controller {
     	}
 	    return Result.success(${modelNameLowerCamel});
     }
+    
+    @RequestMapping("getByCondition")
+    public Result getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    	Map rMap = null;
+    	try {
+    		List<Map<String,Object>> list = ${modelNameLowerCamel}Service.getByCondition(${modelNameLowerCamel});
+    		if(list!=null && list.size()>0) {
+    			rMap = list.get(0);
+    		}
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    		logger.error(e.getMessage());
+    		return Result.error(e.getMessage());
+    	}
+        return Result.success(rMap);
+    }
 
     @RequestMapping("list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
@@ -115,6 +131,8 @@ public class ${modelNameUpperCamel}Controller {
 	        ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findBy(colomnName, colomnVal);
 	        return Result.success(${modelNameLowerCamel});
         }catch(Exception e){
+        	e.printStackTrace();
+        	logger.error(e.getMessage());
         	return Result.error(e.getMessage());
         }
     }
@@ -145,6 +163,7 @@ public class ${modelNameUpperCamel}Controller {
     		return Result.success(pageInfo);
     	}catch(Exception e) {
     		e.printStackTrace();
+    		logger.error(e.getMessage());
     		return Result.error(e.getMessage());
     	}
     }

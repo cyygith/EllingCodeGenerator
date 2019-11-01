@@ -6,6 +6,7 @@ public class TableColEntity {
 	private String colunmKey;//列主键
 	private String dataType;//数据类型
 	private String dealType;//处理类型
+	private String colunmUp;//字段Upper类型，如sys_id->sysId
 	
 	
 	public String getDealType() {
@@ -38,5 +39,12 @@ public class TableColEntity {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	public String getColunmUp() {
+		return colunmUp;
+	}
+	public void setColunmUp(String colunmUp) {
+		this.colunmUp = colunmUp;
+	}
+	
 	
 }
