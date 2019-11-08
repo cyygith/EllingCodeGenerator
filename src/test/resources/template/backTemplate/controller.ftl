@@ -70,7 +70,7 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @RequestMapping("update")
-    public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    public Result update(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
     	try {
 		    ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
 		}catch(Exception e) {
