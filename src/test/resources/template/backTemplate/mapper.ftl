@@ -1,4 +1,4 @@
-package com.elling.contents.dao.mapper;
+package ${basePackage}.dao.mapper;
 
 import java.util.List;
 import java.util.Map;

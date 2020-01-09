@@ -3,24 +3,20 @@
         <div class="black-panel"> &nbsp;</div>
         <div class="condition-panel">
                 <el-form ref="form" :model="form" label-width="120px">
-                	<#--循环输出变量-->
-                	<#list colsEntity as result>
+                	<#list colsEntityNoKey as result><#--循环输出变量 start-->
                 	<#if result_index = 3>
                 	<div v-if="queryMore">
                 	</#if>
-                	
-                	<#--一行输出三个-->
-                	<#if result_index%3=0>
+                	<#if result_index%3=0><#--一行输出三个 start-->
                 	<el-row :gutter="24">
                 	</#if>
-                		<#--如果是时间则打印对应时间空间、下拉控件等-->
-                		<#if result.dealType=='time'>
+                		<#if result.dealType=='time'><#--如果是时间则打印对应时间空间、下拉控件等-->
                 		<el-col :span="7">
                             <el-form-item label="${result.comment}" prop="${result.colunm}">
 				                <el-date-picker v-model="form.${result.colunm}" type="date" placeholder="选择日期" size="small"></el-date-picker>
 				            </el-form-item>
                         </el-col>
-                        <#elseif result.dealType=='select'>
+                        <#elseif result.dealType=='select'><#--如果是下拉控件-->
                         <el-col :span="7">
                         	<el-form-item label="${result.comment}" prop="${result.colunm}">
 	                            <el-select v-model="form.${result.colunm}" placeholder="请选择" style="width:100%" size="small">
@@ -33,7 +29,6 @@
 	                            </el-select>
 	                        </el-form-item>
                         </el-col>
-                        <#elseif result.colunmKey=='PRI'>
                         <#else >
                         <el-col :span="7">
                             <el-form-item label="${result.comment}" prop="${result.colunm}">
@@ -41,12 +36,10 @@
                             </el-form-item>
                         </el-col>	
                         </#if>
-                        
                 	<#if (result_index+1)%3=0>
                 	</el-row>
                 	</#if>
-                	
-                	<#if (result_index+1)=(colsEntity?size)&&((colsEntity?size)%3!=0)>
+                	<#if (result_index+1)=(colsEntityNoKey?size)&&((colsEntityNoKey?size)%3!=0)>
                 	</el-row>
                 	</#if>
  					</#list>
@@ -79,12 +72,8 @@
             <div class="list-list">
                 <el-table border style="width: 100%" :data="tableData" ref="multipleTable">
                         <el-table-column fixed type="selection" width="40"></el-table-column>
-                        <#list colsEntity as result>
-                        <#if result.colunmKey=='PRI'>
-                        <el-table-column prop="${result.colunm}" label="${result.comment}" v-show="false"></el-table-column>
-                        <#else>
+                        <#list colsEntityNoKey as result>
                         <el-table-column prop="${result.colunm}" label="${result.comment}"></el-table-column>
-                        </#if>
                         </#list>
                         <el-table-column fixed="right" label="操作" width="160">
 				            <template slot-scope="scope">
@@ -130,10 +119,8 @@ export default {
             dialogVisible:false,
             visible:false,
             form:{
-            	<#list colsEntity as result>
-            	<#if result.colunmKey!='PRI'>
+            	<#list colsEntityNoKey as result>
             	${result.colunm}:'',
-            	</#if>
             	</#list>
             },
             <#list colsEntity as result>
@@ -156,7 +143,7 @@ export default {
         '${modelNameMidCamel}' : ${modelNameLowerCamel}
     },
     mounted(){
-        
+        this.queryList();
     },
     methods:{
     	//改变每页条数

@@ -107,6 +107,15 @@ public class ListAndManGenerator extends CodeManager implements ICode{
 			
 			colList.add(col);
 		}
+		
+		List<TableColEntity> list1 = new ArrayList<TableColEntity>();
+		colList.forEach((item->{
+			if(!item.getColunmKey().equals("PRI")) {
+				list1.add(item);
+			}
+		}));
+		
+		data.put("colsEntityNoKey",list1);
 		data.put("colsEntity",colList);
 		
 		return data;

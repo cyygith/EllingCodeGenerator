@@ -2,12 +2,11 @@
     <div id="itemManager-container">
         <div class="form-container">
             <el-form ref="form" :rules="rules" :model="form" label-width="100px">
-            	<#list colsEntity as result>
+            	<#list colsEntityNoKey as result>
             	<#if result_index%2=0>
             	<el-row :gutter="24">
             	</#if>
-                    <#--如果是时间则打印对应时间空间/下拉控件等-->
-            		<#if result.dealType=='time'>
+            		<#if result.dealType=='time'><#--如果是时间则打印对应时间空间/下拉控件等-->
             		<el-col :span="12">
                         <el-form-item label="${result.comment}" prop="${result.colunm}">
 			                <el-date-picker v-model="form.${result.colunm}" type="date" placeholder="选择日期" size="small" :disabled="isDetail"></el-date-picker>
@@ -26,20 +25,17 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                    <#elseif result.colunmKey=='PRI'>
                     <#else>
                     <el-col :span="12">
                         <el-form-item label="${result.comment}" prop="${result.colunm}">
                             <el-input v-model="form.${result.colunm}" size="small" :disabled="isDetail"></el-input>
                         </el-form-item>
                     </el-col>	
-                    </#if>
-                        
+                    </#if>    
             	<#if result_index%2=1>
             	</el-row>
             	</#if>
-            	
-            	<#if (result_index+1)=(colsEntity?size)&&((colsEntity?size)%2!=0)>
+            	<#if (result_index+1)=(colsEntityNoKey?size)&&((colsEntityNoKey?size)%2!=0)>
             	</el-row>
             	</#if>
             	</#list>
@@ -54,8 +50,8 @@
                 <el-col :span="2" :offset="2">
                     <el-button type="primary" icon="el-icon-delete-solid" @click="resetForm" v-if="!isDetail">重置</el-button>
                 </el-col>
-                <el-col :span="2" :offset="2">
-                    <el-button type="primary" icon="el-icon-circle-close" @click="close" :offset="!isDetail?2:9">关闭</el-button>
+                <el-col :span="2" :offset="!isDetail?2:9">
+                    <el-button type="primary" icon="el-icon-circle-close" @click="close">关闭</el-button>
                 </el-col>
             </el-row>
         </div>
@@ -79,7 +75,7 @@ export default {
         	type:'detail',//处理类型，新增add、修改update、查看详情detail
             isDetail:false,
             rules: {//校验表单
-            	<#list colsEntity as result>
+            	<#list colsEntityNoKey as result>
             	${result.colunm}:[{required:true,message:'${result.comment}不能为空',trigger: 'blur'}],
             	</#list>
             }
