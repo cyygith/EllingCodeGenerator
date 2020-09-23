@@ -5,12 +5,13 @@ import com.elling.code.utils.CodeUtils;
 
 public class FrontEndGenMain {
 	/**
-	 * .根据表名生成对应的后端文件Service、ServiceImpl、Controller、Mapper、entity、xml等六个文件
+	 * .根据表名生成对应的前端文件xxxList.vue、xxxManager.vue两个文件
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		String[] tableNames = new String[] {"sys_user"};
+		//"tool_gen_code"
+		//"RENT_GROUP","RENT_HOUSE","RENT_PERSON","RENT_CONTRACT","RENT_BILL"
+		String[] tableNames = new String[] {"rent_group","rent_house","rent_person","rent_contract","rent_bill"};
 		
 		for(String tableName:tableNames) {
 			String sign = CodeUtils.getTableNameSplit(tableName)[1];

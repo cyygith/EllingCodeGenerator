@@ -125,7 +125,10 @@ public class FileUtil {
 		FileUtil util = new FileUtil();
 //		find("E:\\WORK\\workspace\\MyProject\\src",depth,filetype);
 //		find("C:\\Users\\Administrator\\Desktop\\上线相关\\PopUpOnline\\proj\\emaster",depth,filetype);
-		util.find("E:\\WORK\\workspace\\EllingCodeGenerator\\src",1,"xml|html");
+//		util.find("E:\\WORK\\workspace\\EllingCodeGenerator\\src",1,"xml|html");
+		
+		util.find("E:\\WORK\\WORKSPACE_JDK8\\SPRINGWorkspace\\flowable", 1, "xml|html");
+		
 		System.out.println("指定文件的个数："+util.getList().size());
 		List list = util.getList();
 		for(int i=0;i<list.size();i++){

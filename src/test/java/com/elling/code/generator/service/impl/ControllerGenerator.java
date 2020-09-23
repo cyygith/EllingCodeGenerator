@@ -38,6 +38,7 @@ public class ControllerGenerator extends CodeManager implements ICode {
 	        }
 	        cfg.getTemplate("controller.ftl").process(data, new FileWriter(controllerFile));
 			logger.info(modelNameUpperCamel + "Controller.java 生成成功!");
+			System.out.println("Controller路径为："+controllerPath);
 		} catch (Exception e) {
 			throw new RuntimeException("Controller 生成失败!", e);
 		}

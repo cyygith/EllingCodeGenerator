@@ -38,14 +38,16 @@ public class MapperXmlGenerator extends CodeManager implements ICode{
 		Map<String, Object> data = getInitData(map);
 		try {
 			// 创建 Mapper.xml 接口
-			String servicePath = PROJECT_PATH+Config.getConf("resources.path");
-			File serviceFile = new File(servicePath + baseModel + customMapping + modelNameUpperCamel + "Mapper.xml");
+			String MapperXmlPath = PROJECT_PATH+Config.getConf("resources.path") +baseModel + customMapping + modelNameUpperCamel + "Mapper.xml";
+			File serviceFile = new File(MapperXmlPath);
 			// 查看父级目录是否存在, 不存在则创建
 			if (!serviceFile.getParentFile().exists()) {
 				serviceFile.getParentFile().mkdirs();
 			}
 			cfg.getTemplate("mapper-xml.ftl").process(data, new FileWriter(serviceFile));
 			logger.info(modelNameUpperCamel + "Mapper.xml 生成成功!");
+			
+			System.out.println("Mapper-xml路径为："+MapperXmlPath);
 		} catch (Exception e) {
 			throw new RuntimeException("Mapper.xml 生成失败!", e);
 		}
@@ -62,7 +64,7 @@ public class MapperXmlGenerator extends CodeManager implements ICode{
 		data.put("basePackage", Config.getConf("base.package"));
 		
 		QueryMysqlTable query = new QueryMysqlTable();
-		String sql = "select t.COLUMN_NAME,t.COLUMN_COMMENT,t.COLUMN_KEY,T.DATA_TYPE from information_schema.`COLUMNS` t where t.TABLE_NAME = '"+tableName+"' AND t.TABLE_SCHEMA='"+schema+"'";    //要执行的SQL
+		String sql = "select t.COLUMN_NAME,t.COLUMN_COMMENT,t.COLUMN_KEY,t.DATA_TYPE from information_schema.`COLUMNS` t where t.TABLE_NAME = '"+tableName+"' AND t.TABLE_SCHEMA='"+schema+"'";    //要执行的SQL
 		String[] arr = new String[] {null};
 		List<Map<String,Object>> list = query.getBySql(sql, null);
 		List<TableColEntity> colList = new ArrayList<TableColEntity>();
@@ -85,7 +87,17 @@ public class MapperXmlGenerator extends CodeManager implements ICode{
 			}
 			colList.add(col);
 		}
+		
+		
+		List<TableColEntity> colist1 = new ArrayList<TableColEntity>();
+		colList.forEach((item)->{
+			if(!item.getColunmKey().equals("PRI")) {
+				colist1.add(item);
+			}
+		});
+		
 		data.put("colsEntity",colList);
+		data.put("colsEntityNoKey",colist1);
 		
 		return data;
 	}

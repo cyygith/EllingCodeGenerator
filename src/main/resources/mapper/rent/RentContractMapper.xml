@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elling.rent.dao.mapper.RentContractMapper">
+  <resultMap id="BaseResultMap" type="com.elling.rent.model.RentContract">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="CONTRACT_CODE" jdbcType="VARCHAR" property="contractCode" />
+    <result column="CONTRACT_NAME" jdbcType="VARCHAR" property="contractName" />
+    <result column="HOUSE_CODE" jdbcType="VARCHAR" property="houseCode" />
+    <result column="PERSON_CODE" jdbcType="VARCHAR" property="personCode" />
+    <result column="SIGN_TIME" jdbcType="VARCHAR" property="signTime" />
+    <result column="START_TIME" jdbcType="VARCHAR" property="startTime" />
+    <result column="END_TIME" jdbcType="VARCHAR" property="endTime" />
+    <result column="RENTER" jdbcType="VARCHAR" property="renter" />
+    <result column="DEPOSIT" jdbcType="VARCHAR" property="deposit" />
+    <result column="WATER_CLOSE_TYPE" jdbcType="VARCHAR" property="waterCloseType" />
+    <result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="ORDER_NUM" jdbcType="BIGINT" property="orderNum" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+</mapper>

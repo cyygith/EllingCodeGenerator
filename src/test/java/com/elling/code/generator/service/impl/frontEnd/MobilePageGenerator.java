@@ -1,4 +1,4 @@
-package com.elling.code.generator.service.impl;
+package com.elling.code.generator.service.impl.frontEnd;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -20,15 +20,17 @@ import com.google.common.base.CaseFormat;
 import freemarker.template.Configuration;
 
 /**
- * 生成vue相关的xxxList.vue和xxxManager.vue相关
+ * 生成mobile phone中xxxList.vue、 xxxItem.vue、xxxxItemModify.vue、xxxitemDetail.vue、xxxApi.js、xxxstyle.css相关文档
+ * 生成手机上的相关页面，列表页面、查看页面、详细页面、编辑页面、api界面、公共style页面
+ * 
  * @author Administrator
  *
  */
-public class ListAndManGenerator extends CodeManager implements ICode{
+public class MobilePageGenerator extends CodeManager implements ICode{
 
 	@Override
 	public void genCode(String tableName, String modelName, String sign) {
-		String templatePath = "/src/test/resources/template/frontTemplate";
+		String templatePath = "/src/test/resources/template/frontTemplate/mobile";
 		Configuration cfg = getFreemarkerConfiguration(templatePath);
 		String customMapping = "/" + sign + "/";
 		String modelNameLowerCamel = StringUtils.isNullOrEmpty(modelName) ? CodeUtils.tableNameConvertLowerCamel(tableName) : modelName;
@@ -47,7 +49,7 @@ public class ListAndManGenerator extends CodeManager implements ICode{
 			if (!listFile.getParentFile().exists()) {
 				listFile.getParentFile().mkdirs();
 			}
-			cfg.getTemplate("List.ftl").process(data, new FileWriter(listFile));
+			cfg.getTemplate("itemList.ftl").process(data, new FileWriter(listFile));
 			logger.info (modelNameLowerCamel+ "List.vue 生成成功!");
 			
 			// 创建 Manager 页面

@@ -1,0 +1,60 @@
+#公共配置
+spring:
+	application:
+		name: service-registry
+	profiles:
+		#服务启动时指定profiles配置使用单机配置或者集群配置
+		active: pro
+		
+##单机注册中心配置
+spring:
+	profiles: pro
+server:
+	port: ${server.port}
+
+info:
+	name: ${spring.application.name}
+
+eureka:
+	server:
+		enableSelfPreservation: false
+		evictionIntervalTimerInMs: 5000
+	instance:
+		perferIpAddress: true
+		hostname: ${eureka.instance.hostname}
+	client:
+		registerWithEureka: false
+		#fetchRegistry: false
+		serviceUrl:
+			defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+			#defaultZone: http://128.64.96.152:8762/eureka/
+			
+##集群注册中心实例二配置
+---
+spring:
+	profiles: reg
+server:
+	port: 6851
+
+info:
+	name: ${spring.application.name}
+
+eureka:
+	server:
+		enableSelfPreservation: false
+		evictionIntervalTimerInMs: 5000
+	instance:
+		#允许使用ip作为hostname
+		perferIpAddress: true
+		#集群配置域名不能相同，正式环境建议用使用ip
+		hostname: ${eureka.hostname:128.196.180.132}
+	client:
+		perferIpAddress: true
+		#registerWithEureka: false
+		#fetchRegistry: false
+		serviceUrl:
+			defaultZone: ${eureka.uri:http://128.196.180.131:6851/eureka},${eureka.uri:http://128.196.180.133:6851/eureka},
+			
+	
+
+		

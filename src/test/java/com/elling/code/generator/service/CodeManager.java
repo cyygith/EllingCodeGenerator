@@ -29,8 +29,9 @@ protected static final Logger logger = LoggerFactory.getLogger(CodeManager.class
 	
 	private static Configuration configuration = null;
 	// 项目在硬盘上的基础路径
-	protected static final String PROJECT_PATH = System.getProperty("user.dir");
-	
+//	protected static final String PROJECT_PATH = System.getProperty("user.dir");
+	protected static final String PROJECT_PATH = "D:/genCode";//这里改成硬盘的具体路径，防止生成第二份的时候将第一次的代码覆盖，造成问题
+	protected static final String TEMPLATE_PATH = System.getProperty("user.dir");
 	/**
 	 * 获取 Freemarker 模板环境配置
 	 * path : 模板的地址，配置在config.properties中也可以，也可以自己输入
@@ -53,7 +54,7 @@ protected static final Logger logger = LoggerFactory.getLogger(CodeManager.class
 		try {
 			path = StringUtil.isEmpty(path)?Config.getConf("template.file.path"):path;//如果有，则传入，如果没有，则使用配置文件中默认配置的模板地址
 			cfg = new Configuration(Configuration.VERSION_2_3_23);
-			cfg.setDirectoryForTemplateLoading(new File(PROJECT_PATH+path));
+			cfg.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH+path));
 			cfg.setDefaultEncoding("UTF-8");
 			cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
 		} catch (IOException e) {
@@ -81,7 +82,7 @@ protected static final Logger logger = LoggerFactory.getLogger(CodeManager.class
         context.setJdbcConnectionConfiguration(jdbcConnectionConfiguration);
         
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
-        sqlMapGeneratorConfiguration.setTargetProject(PROJECT_PATH + Config.getConf("resources.path"));
+        sqlMapGeneratorConfiguration.setTargetProject(TEMPLATE_PATH + Config.getConf("resources.path"));
         sqlMapGeneratorConfiguration.setTargetPackage("mapper."+Config.getConf("base.model"));
         context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
         

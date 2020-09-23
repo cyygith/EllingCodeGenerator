@@ -9,7 +9,7 @@
             		<#if result.dealType=='time'><#--如果是时间则打印对应时间空间/下拉控件等-->
             		<el-col :span="12">
                         <el-form-item label="${result.comment}" prop="${result.colunm}">
-			                <el-date-picker v-model="form.${result.colunm}" type="date" placeholder="选择日期" size="small" :disabled="isDetail"></el-date-picker>
+			                <el-date-picker v-model="form.${result.colunm}" type="date" value-format="yyyy-MM-DD" placeholder="选择日期" size="small" :disabled="isDetail"></el-date-picker>
 			            </el-form-item>
                     </el-col>
                     <#elseif result.dealType=='select'>
@@ -64,7 +64,7 @@ export default {
         return {
             form:{
             	<#list colsEntity as result>
-            	${result.colunm}:'',
+            	${result.colunm}:null,
             	</#list>
             },
             <#list colsEntity as result>

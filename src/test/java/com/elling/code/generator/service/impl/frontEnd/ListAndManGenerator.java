@@ -1,4 +1,4 @@
-package com.elling.code.generator.service.impl;
+package com.elling.code.generator.service.impl.frontEnd;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -20,7 +20,7 @@ import com.google.common.base.CaseFormat;
 import freemarker.template.Configuration;
 
 /**
- * 生成vue相关的xxxList.vue和xxxManager.vue相关
+ * 生成mobile phone中 xxxlist.vue、xxxxItem.vue、xxxDetail.vue相关文档
  * @author Administrator
  *
  */

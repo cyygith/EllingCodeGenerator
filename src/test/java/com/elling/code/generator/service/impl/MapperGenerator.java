@@ -47,6 +47,7 @@ public class MapperGenerator extends CodeManager implements ICode{
 			}
 			cfg.getTemplate("mapper.ftl").process(data, new FileWriter(serviceFile));
 			logger.info(modelNameUpperCamel + "Mapper.java 生成成功!");
+			System.out.println("Mapper-service路径为："+servicePath);
 			
 		} catch (Exception e) {
 			throw new RuntimeException("Mapper.java 生成失败!", e);

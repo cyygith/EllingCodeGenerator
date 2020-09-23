@@ -54,6 +54,9 @@ public class ServiceGenerator extends CodeManager implements ICode{
 			}
 			cfg.getTemplate("service-impl.ftl").process(data, new FileWriter(serviceImplFile));
 			logger.info(modelNameUpperCamel + "ServiceImpl.java 生成成功!");
+			
+			System.out.println("service-service路径为："+servicePath);
+			System.out.println("service-impl-service路径为："+serviceImplPath);
 		} catch (Exception e) {
 			throw new RuntimeException("Service 生成失败!", e);
 		}

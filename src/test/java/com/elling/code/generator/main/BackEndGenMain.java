@@ -15,7 +15,8 @@ public class BackEndGenMain {
 	 */
 	public static void main(String[] args) {
 		
-		String[] tableNames = new String[] {"sys_role"};
+		//"RENT_GROUP","RENT_HOUSE","RENT_PERSON","RENT_CONTRACT","RENT_BILL"
+		String[] tableNames = new String[] {"RENT_GROUP","RENT_HOUSE","RENT_PERSON","RENT_CONTRACT","RENT_BILL"};
 		
 		for(String tableName:tableNames) {
 			String sign = CodeUtils.getTableNameSplit(tableName)[1];
@@ -25,7 +26,6 @@ public class BackEndGenMain {
 			new ControllerGenerator().genCode(tableName, modelName, sign);//生成controller页面相关
 			new MapperGenerator().genCode(tableName, modelName, sign);//生成Mapper文件
 			new MapperXmlGenerator().genCode(tableName, modelName, sign);//生成Mapper.xml文件
-			
 		}
 		System.out.println("执行成功");
 		
