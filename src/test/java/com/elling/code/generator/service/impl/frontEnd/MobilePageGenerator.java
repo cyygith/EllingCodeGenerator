@@ -42,27 +42,75 @@ public class MobilePageGenerator extends CodeManager implements ICode{
 		map.put("modelNameLowerCamel", modelNameLowerCamel);
 		Map<String, Object> data = getInitData(map);
 		try {
-			// 创建 list 页面
-			String listPath = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "List.vue";
-			File listFile = new File(listPath);
+			// 创建 api 页面***********************************************************************************************************************
+			String path = PROJECT_PATH + PAGE_PATH + customMapping + sign + "-api.js";
+			File file = new File(path);
 			// 查看父级目录是否存在, 不存在则创建
-			if (!listFile.getParentFile().exists()) {
-				listFile.getParentFile().mkdirs();
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
 			}
-			cfg.getTemplate("itemList.ftl").process(data, new FileWriter(listFile));
-			logger.info (modelNameLowerCamel+ "List.vue 生成成功!");
+			cfg.getTemplate("api.ftl").process(data, new FileWriter(file));
+			System.out.println("api路径为："+path);
 			
-			// 创建 Manager 页面
-			String ManagerPath = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "Manager.vue";
-			File ManagerFile = new File(ManagerPath);
+			
+			// 创建 item 页面***********************************************************************************************************************
+			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + ".vue";
+			file = new File(path);
 			// 查看父级目录是否存在, 不存在则创建
-			if (!ManagerFile.getParentFile().exists()) {
-				ManagerFile.getParentFile().mkdirs();
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
 			}
-			cfg.getTemplate("manager.ftl").process(data, new FileWriter(ManagerFile));
-			logger.info (modelNameLowerCamel+ "manager.vue 生成成功!");
-			System.out.println("List路径为："+listPath);
-			System.out.println("Controller路径为："+ManagerPath);
+			cfg.getTemplate("item.ftl").process(data, new FileWriter(file));
+			System.out.println("item路径为："+path);
+			
+			
+			
+			// 创建 itemDetail 页面***********************************************************************************************************************
+			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "Detail.vue";
+			file = new File(path);
+			// 查看父级目录是否存在, 不存在则创建
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			cfg.getTemplate("itemDetail.ftl").process(data, new FileWriter(file));
+			System.out.println("itemDetail路径为："+path);
+			
+			
+			// 创建 itemList 页面***********************************************************************************************************************
+			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "List.vue";
+			file = new File(path);
+			// 查看父级目录是否存在, 不存在则创建
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			cfg.getTemplate("itemList.ftl").process(data, new FileWriter(file));
+			System.out.println("itemList路径为："+path);
+			
+			
+			// 创建 itemModify 页面***********************************************************************************************************************
+			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "Modify.vue";
+			file = new File(path);
+			// 查看父级目录是否存在, 不存在则创建
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			cfg.getTemplate("itemModify.ftl").process(data, new FileWriter(file));
+			System.out.println("itemModify路径为："+path);
+					
+			
+			
+			// 创建 style 页面***********************************************************************************************************************
+			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "style.css";
+			file = new File(path);
+			// 查看父级目录是否存在, 不存在则创建
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			cfg.getTemplate("style.ftl").process(data, new FileWriter(file));
+			System.out.println("style路径为："+path);
+									
+			
+			
 		} catch (Exception e) {
 			throw new RuntimeException("vue 生成失败!", e);
 		}

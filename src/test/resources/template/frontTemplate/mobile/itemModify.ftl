@@ -1,7 +1,7 @@
 <template>
     <div class="${sign}-panel">
         <div class="head-panel">
-            <button @click="backBefore"  class="btnclass head-back"><&nbsp;编辑房屋</button>
+            <button @click="backBefore"  class="btnclass head-back"><&nbsp;编辑</button>
             <button class="btnclass head-save" @click="saveOrUpdate">保存</button>
         </div>
         <div class="content-panel">

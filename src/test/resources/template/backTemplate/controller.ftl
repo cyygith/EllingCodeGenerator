@@ -39,7 +39,7 @@ public class ${modelNameUpperCamel}Controller {
 	    }catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("查询错误："+e.getMessage());
     	}
 	    return Result.success();
     }
@@ -51,7 +51,7 @@ public class ${modelNameUpperCamel}Controller {
 		}catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
     }
@@ -64,7 +64,7 @@ public class ${modelNameUpperCamel}Controller {
     	}catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
     }
@@ -76,7 +76,7 @@ public class ${modelNameUpperCamel}Controller {
 		}catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
     }
@@ -89,7 +89,7 @@ public class ${modelNameUpperCamel}Controller {
 	    }catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success(${modelNameLowerCamel});
     }
@@ -105,7 +105,7 @@ public class ${modelNameUpperCamel}Controller {
     	}catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
         return Result.success(rMap);
     }
@@ -120,7 +120,7 @@ public class ${modelNameUpperCamel}Controller {
 	    }catch(Exception e) {
     	   e.printStackTrace();
 	   	   logger.error(e.getMessage());
-	   	   return Result.error(e.getMessage());
+	   	   return Result.error("内部出错："+e.getMessage());
        	}
         return Result.success(pageInfo);
     }
@@ -133,7 +133,7 @@ public class ${modelNameUpperCamel}Controller {
         }catch(Exception e){
         	e.printStackTrace();
         	logger.error(e.getMessage());
-        	return Result.error(e.getMessage());
+        	return Result.error("内部出错："+e.getMessage());
         }
     }
     
@@ -164,7 +164,7 @@ public class ${modelNameUpperCamel}Controller {
     	}catch(Exception e) {
     		e.printStackTrace();
     		logger.error(e.getMessage());
-    		return Result.error(e.getMessage());
+    		return Result.error("内部出错："+e.getMessage());
     	}
     }
 }
