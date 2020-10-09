@@ -7,7 +7,7 @@
         	<#list colsEntityNoKey as result><#--循环输出变量 start-->
         	<div class="c-item">
                 <div class="cc-name">${result.comment}</div>
-                <div class="cc-value">{{form.${result.colunm}}}<span class="ccc-span">></span></div>
+                <div class="cc-value" @click="toEdit('${result.colunm}',form.${result.colunm});">{{form.${result.colunm}}}<span class="ccc-span">></span></div>
             </div>
         	</#list>
         </div>

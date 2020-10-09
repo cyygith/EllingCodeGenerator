@@ -24,6 +24,8 @@ export default {
             	${result.colunm}:null,
             	</#list>
             },
+            showItem:'',
+            showItemValue:''
         }
     },
     computed:{

@@ -25,10 +25,6 @@ const ${sign}Api = {
   detail (params) {
     return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/detail`, params)
   },
-  // 根据组别选择
-  getListByGroup (params) {
-    return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/getListByGroup`, params)
-  },
   // 查询
   getByCondition (params) {
     return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/getByCondition`, params)

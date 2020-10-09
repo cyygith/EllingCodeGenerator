@@ -1,5 +1,5 @@
 <template>
-    <div class="billlist-panel">
+    <div class="list-panel">
         <div class="head-panel">
             <button class="btnclass head-back">< 退回</button>
         </div>
@@ -91,36 +91,39 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../assets/css/custom-module/mobileCommon.css';
-.billlist-panel{
-    background-color: grey;
-    position: relative;
-    .c-item{
+.list-panel{
+    background-color: rgb(241, 238, 238);
+    .content-panel{
+        background-color: white;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        line-height: 1.5rem;
         display: flex;
         flex-direction: row;
         width: 100%;
-        padding: 1rem;
-        background-color: white;
-        border-bottom: 1px solid rgb(214, 210, 210);
-    }
-        .cc-name{
-            width: 5rem;
+    }   
+        .c-img{
+            padding: 1rem;
+            background-color: lightgreen;
+            border-radius: 50%;
+            margin-right: 1rem;
         }
-        .cc-value{
+        .c-other{
             flex-grow: 1;
-            text-align: right;  
             margin-right: 2rem;
         }
-            .ccc-span{
-                font-weight: bold;
-                margin-left: 0.5rem;
-            }
-        .cc-amount{
-            color: red;
-            font-size: 1.3rem;
-        }
-    .smallsize{
-        size: 0.5rem;
-        color:grey;
+                .ccc-time{
+                    font-size: 0.7rem;
+                    color: grey;
+                    
+                }
+                .ccc-money{
+                    float: right;
+                    color: blue;
+                    
+                }
+    .foot-panel{
+        padding: 0.3rem;
     }
     .load-more{
     	text-align:center;
