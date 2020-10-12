@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../assets/css/custom-module/mobileCommon.css';
+@import '../common/commonstyle.css';
 .list-panel{
     background-color: rgb(241, 238, 238);
     .content-panel{

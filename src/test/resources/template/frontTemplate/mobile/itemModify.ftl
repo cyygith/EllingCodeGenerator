@@ -6,7 +6,7 @@
         </div>
         <div class="content-panel">
         	<#list colsEntityNoKey as result><#--循环输出变量 start-->
-            <div class="c-item" v-if="showItem=='${result.colunm}'">
+            <div class="c-item" v-if="ifNew||showItem==='${result.colunm}'">
                 <input type="number" placeholder="请输入${result.comment}"  class="c-input" name="${result.colunm}" v-model="form.${result.colunm}">
             </div>
         	</#list>
@@ -24,6 +24,7 @@ export default {
             	${result.colunm}:null,
             	</#list>
             },
+            ifNew:false, //是否为新增，如果新增，则不加一个个过滤
             showItem:'',
             showItemValue:''
         }
@@ -33,8 +34,9 @@ export default {
     },
     mounted(){
         this.detail();
-        this.id = this.$route.query.id;
-        this.form.id = this.$route.query.id;
+        this.showItem = this.$route.query.showItem;
+        this.form[this.showItem] = this.$route.query.showItemValue;
+        this.ifNew = this.$route.query.ifNew;
     },
     watch:{
     
