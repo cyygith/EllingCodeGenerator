@@ -1,13 +1,14 @@
 <template>
     <div class="${sign}-panel">
         <div class="head-panel">
-            <button @click="backBefore"  class="btnclass head-back"><&nbsp;编辑</button>
+            <button @click="backBefore"  class="btnclass head-back"><&nbsp;退回</button>
             <button class="btnclass head-save" @click="saveOrUpdate">保存</button>
         </div>
         <div class="content-panel">
         	<#list colsEntityNoKey as result><#--循环输出变量 start-->
             <div class="c-item" v-if="ifNew||showItem==='${result.colunm}'">
-                <input type="number" placeholder="请输入${result.comment}"  class="c-input" name="${result.colunm}" v-model="form.${result.colunm}">
+                <div>${result.comment}:</div>
+                <input placeholder="请输入${result.comment}"  class="c-input" name="${result.colunm}" v-model="form.${result.colunm}">
             </div>
         	</#list>
         </div>
@@ -98,8 +99,9 @@ export default {
     background-color: grey;
     position: relative;
     .c-item{
-        display: flex;
-        flex-direction: row;
+        // display: flex;
+        // flex-direction: row;
+        line-height: 2rem;
         width: 100%;
         padding: 1rem;
         background-color: white;

@@ -36,27 +36,27 @@ export default {
     
     },
     methods:{
-        // 退出登录
+        // 閫�鍑虹櫥褰�
         logout(){
             this.$router.push('/login');
         },
-        //返回上一页
+        //杩斿洖涓婁竴椤�
         backBefore(){
             this.$router.back(-1);
         },
-        // 获取详情
+        // 鑾峰彇璇︽儏
         detail(){
             let ${primaryKey} = this.$route.query.${primaryKey};
             let param = new URLSearchParams();
             param.append("${primaryKey}",${primaryKey});
-            let loading = this.$loading({lock:true,text:'获取中....',background:'rgba(0,0,0,0.5)'});
+            let loading = this.$loading({lock:true,text:'鑾峰彇涓�....',background:'rgba(0,0,0,0.5)'});
             ${sign}Api.getByCondition(param).then((res)=>{
                 if(res.code == "0"){
                     if(res.data){    
                         this.form = res.data;
                     }
                 }else{
-                    this.$alert('获取信息失败，联系管理员','提示信息');
+                    this.$alert('鑾峰彇淇℃伅澶辫触锛岃仈绯荤鐞嗗憳','鎻愮ず淇℃伅');
                 }
                 loading.close();
             });	

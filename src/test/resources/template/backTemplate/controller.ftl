@@ -80,7 +80,24 @@ public class ${modelNameUpperCamel}Controller {
     	}
 	    return Result.success();
     }
-
+	
+    @RequestMapping("saveOrUpdate")
+    public Result saveOrUpdate(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    	try {
+    		if(${modelNameLowerCamel}.getId()!=null) {
+    			rentHouseService.update(${modelNameLowerCamel});
+    		}else {
+    			rentHouseService.save(${modelNameLowerCamel});
+    		}
+		    
+		}catch(Exception e) {
+    		e.printStackTrace();
+    		logger.error(e.getMessage());
+    		return Result.error("查询错误："+e.getMessage());
+    	}
+	    return Result.success();
+    }
+	
     @RequestMapping("detail")
     public Result detail(@RequestParam Long id) {
     	${modelNameUpperCamel} ${modelNameLowerCamel} = null;
