@@ -1,7 +1,10 @@
 <template>
     <div class="list-panel">
         <div class="head-panel">
-            <button class="btnclass head-back">< 退回</button>
+            <button @click="backBefore" class="btnclass head-back">< 退回</button>
+            <button @click="detail" class="btnclass head-save">查看</button>
+            <button @click="add" class="btnclass head-save">新增</button>
+            <button @click="del" class="btnclass head-save">删除</button>
         </div>
         <div class="content-panel" v-for='(tItem,tIndex) in tableData' :key="tIndex">
             <div class="c-img">{{tItem.houseCode}}</div>
@@ -64,7 +67,7 @@ export default {
         },
         //编辑详情
         toDetail(item){
-            this.$router.push({path:'rentBillDetail',query:{id:item.id}});
+            this.$router.push({path:'${modelNameLowerCamel}Detail',query:{id:item.id}});
         },
         // 获取详情
         queryList(){
@@ -84,6 +87,43 @@ export default {
                 }
                 loading.close();
             });	
+        },
+        //修改
+        detail(){
+            this.$router.push({path:'${modelNameLowerCamel}',query:{id:this.chooseItem.id}});
+        },
+        //新增
+        add(){
+            this.$router.push({path:'${modelNameLowerCamel}Modify',query:{ifNew:true}});
+        },
+        //删除
+        del() {
+            this.$confirm('确定删除该记录?', '提示', {confirmButtonText: '确定',cancelButtonText: '取消',type: 'warning'}).then(() => {
+                let param = new URLSearchParams();
+                param.append("id",this.chooseItem.id);
+                ${sign}Api.delete(param).then(res => {
+                    if (res.code == "0") {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!',
+                            duration: 2000
+                        });
+                        this.detail();
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: '删除失败，联系管理员',
+                            duration: 2000
+                        });
+                    }
+                });
+            }).catch((e) => {
+                console.dir(e);
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+            });   
         },
     }
 }

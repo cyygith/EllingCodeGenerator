@@ -7,11 +7,15 @@ import axios from './http'
 const ${sign}Api = {
   // list
   list (params) {
-    return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/getByExample`, params)
+    return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/list`, params)
   },
-  // 删除
+  // 删除(多条)
   deleteByIds (params) {
     return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/deleteByIds`, params)
+  },
+  // 删除
+  delete (params) {
+    return axios.post(`${r"${baseUrl}"}/${modelNameLowerCamel}/delete`, params)
   },
   // 保存
   save (params) {

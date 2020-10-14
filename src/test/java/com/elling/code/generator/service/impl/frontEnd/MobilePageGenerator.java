@@ -100,7 +100,7 @@ public class MobilePageGenerator extends CodeManager implements ICode{
 			
 			
 			// 创建 style 页面***********************************************************************************************************************
-			path = PROJECT_PATH + PAGE_PATH + customMapping + modelNameLowerCamel + "style.css";
+			path = PROJECT_PATH + PAGE_PATH + customMapping  + "style.css";
 			file = new File(path);
 			// 查看父级目录是否存在, 不存在则创建
 			if (!file.getParentFile().exists()) {
