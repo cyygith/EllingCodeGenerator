@@ -34,10 +34,12 @@ export default {
 
     },
     mounted(){
-        this.detail();
         this.showItem = this.$route.query.showItem;
         this.form[this.showItem] = this.$route.query.showItemValue;
         this.ifNew = this.$route.query.ifNew;
+        if(!this.ifNew){ //如果不是新的，则查询
+            this.detail();
+        }
     },
     watch:{
     
@@ -53,9 +55,9 @@ export default {
         },
         // 获取详情
         detail(){
-            let ${primaryKey} = this.$route.query.${primaryKey};
+            let ${primaryKey} = this.$route.query.id;
             let param = new URLSearchParams();
-            param.append("${primaryKey}",${primaryKey});
+            param.append("id",${primaryKey});
             let loading = this.$loading({lock:true,text:'获取中....',background:'rgba(0,0,0,0.5)'});
             ${sign}Api.getByCondition(param).then((res)=>{
                 if(res.code == "0"){

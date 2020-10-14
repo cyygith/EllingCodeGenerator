@@ -46,13 +46,13 @@ export default {
         },
         //编辑详情
         toEdit(item,value){
-            this.$router.push({path:'${sign}Modify',query:{id:this.form.id,showItem:item,showItemValue:value}});
+            this.$router.push({path:'${modelNameLowerCamel}Modify',query:{id:this.form.id,showItem:item,showItemValue:value}});
         },
         // 获取详情
         detail(){
-            let ${primaryKey} = this.$route.query.${primaryKey};
+            let ${primaryKey} = this.$route.query.id;
             let param = new URLSearchParams();
-            param.append("${primaryKey}",${primaryKey});
+            param.append("id",${primaryKey});
             let loading = this.$loading({lock:true,text:'获取中....',background:'rgba(0,0,0,0.5)'});
             ${sign}Api.getByCondition(param).then((res)=>{
                 if(res.code == "0"){
