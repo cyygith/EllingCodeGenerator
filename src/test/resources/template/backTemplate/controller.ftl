@@ -38,7 +38,7 @@ public class ${modelNameUpperCamel}Controller {
 	        ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
 	    }catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("查询错误："+e.getMessage());
     	}
 	    return Result.success();
@@ -50,7 +50,7 @@ public class ${modelNameUpperCamel}Controller {
 		    ${modelNameLowerCamel}Service.deleteById(id);
 		}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
@@ -63,7 +63,7 @@ public class ${modelNameUpperCamel}Controller {
     		${modelNameLowerCamel}Service.deleteByIds(ids);
     	}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
@@ -75,7 +75,7 @@ public class ${modelNameUpperCamel}Controller {
 		    ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
 		}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success();
@@ -92,7 +92,7 @@ public class ${modelNameUpperCamel}Controller {
 		    
 		}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("查询错误："+e.getMessage());
     	}
 	    return Result.success();
@@ -105,7 +105,7 @@ public class ${modelNameUpperCamel}Controller {
 	        ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
 	    }catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
 	    return Result.success(${modelNameLowerCamel});
@@ -121,7 +121,7 @@ public class ${modelNameUpperCamel}Controller {
     		}
     	}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
         return Result.success(rMap);
@@ -136,7 +136,7 @@ public class ${modelNameUpperCamel}Controller {
 	        pageInfo = new PageInfo(list);
 	    }catch(Exception e) {
     	   e.printStackTrace();
-	   	   logger.error(e.getMessage());
+	   	   logger.error("操作异常",e);
 	   	   return Result.error("内部出错："+e.getMessage());
        	}
         return Result.success(pageInfo);
@@ -149,7 +149,7 @@ public class ${modelNameUpperCamel}Controller {
 	        return Result.success(${modelNameLowerCamel});
         }catch(Exception e){
         	e.printStackTrace();
-        	logger.error(e.getMessage());
+        	logger.error("操作异常",e);
         	return Result.error("内部出错："+e.getMessage());
         }
     }
@@ -180,7 +180,7 @@ public class ${modelNameUpperCamel}Controller {
     		return Result.success(pageInfo);
     	}catch(Exception e) {
     		e.printStackTrace();
-    		logger.error(e.getMessage());
+    		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
     }

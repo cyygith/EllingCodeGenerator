@@ -27,7 +27,7 @@
 			${tableName} T
 		<where>
 		    <#list colsEntity as result>
-			<if test="${result.colunmUp}!=null and ${result.colunmUp} != ''">T.${result.colunm} = ${r'#{'}${result.colunmUp}${r'}'}</if>
+			<if test="${result.colunmUp}!=null and ${result.colunmUp} != ''">AND T.${result.colunm} = ${r'#{'}${result.colunmUp}${r'}'}</if>
 			</#list>
 		</where>
   </select>
