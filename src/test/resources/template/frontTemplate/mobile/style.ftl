@@ -83,3 +83,21 @@
         background-color: rgb(144, 173, 236);
         color: white;
     }
+/*******以下是头尾固定，中间滚动的样式***************/
+.fixed-head{
+    background-color: #75c2ee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5%;
+}
+.overflow-content{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 9%;
+    bottom: 8%;
+    overflow: auto;
+    padding: 0
+}

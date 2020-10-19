@@ -6,17 +6,20 @@
             <button @click="add" class="btnclass head-save">新增</button>
             <button @click="del" class="btnclass head-save">删除</button>
         </div>
-        <div class="content-panel" v-for='(tItem,tIndex) in tableData' :key="tIndex" :class="[{'chooseDiv':chooseDiv==tItem.id}]" @click="choose(tItem);">
-            <div class="c-img" @click="toDetail(tItem)">{{tItem.id}}</div>
-            <div class="c-other">
-                <div class="cc-room">{{tItem.groupName}} {{tItem.houseName}}</div>
-                <div class="cc-content">
-                    <span class="ccc-time">{{tItem.createTime}}</span> 
-                    <span class="ccc-money">{{tItem.status==='1'?'启用':'禁用'}}</span>
-                </div>
-            </div>
+        <div class="overflow-content">
+	        <div class="content-panel" v-for='(tItem,tIndex) in tableData' :key="tIndex" :class="[{'chooseDiv':chooseDiv==tItem.id}]" @click="choose(tItem);">
+	            <div class="c-img" @click="toDetail(tItem)">{{tItem.id}}</div>
+	            <div class="c-other">
+	                <div class="cc-room">{{tItem.groupName}} {{tItem.houseName}}</div>
+	                <div class="cc-content">
+	                    <span class="ccc-time">{{tItem.createTime}}</span> 
+	                    <span class="ccc-money">{{tItem.status==='1'?'启用':'禁用'}}</span>
+	                </div>
+	            </div>
+	        </div>
         </div>
         <div class="load-more" v-if="this.page.totalCount>this.page.pageSize">加载更多...</div>
+    	<div class="foot-panel"> </div>
     </div>
 </template>
 

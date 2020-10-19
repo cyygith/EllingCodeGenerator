@@ -11,6 +11,7 @@
             </div>
         	</#list>
         </div>
+        <div class="foot-panel"> </div>
     </div>
 </template>
 <script>
@@ -73,7 +74,6 @@ export default {
 @import '../common/commonstyle.css';
 .${sign}-panel{
     background-color: grey;
-    position: relative;
     .c-item{
         display: flex;
         flex-direction: row;
