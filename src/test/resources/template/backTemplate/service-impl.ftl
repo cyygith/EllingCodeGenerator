@@ -21,7 +21,7 @@ public class ${modelNameUpperCamel}ServiceImpl extends AbstractService<${modelNa
     private ${modelNameUpperCamel}Mapper ${modelNameLowerCamel}Mapper;
     
 	@Override
-	public List<Map<String,Object>> getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel}) {
+	public List<${modelNameUpperCamel}> getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel}) {
 		return ${modelNameLowerCamel}Mapper.getByCondition(${modelNameLowerCamel});
 	}
 }

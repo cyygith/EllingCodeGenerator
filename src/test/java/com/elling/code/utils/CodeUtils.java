@@ -44,7 +44,9 @@ public class CodeUtils {
 	public static String[] getTableNameSplit(String tableName) {
 		String[] strs = tableName.split("_");
 		if (!tableName.contains("_") || strs.length < 2) {
-			throw new RuntimeException("表名格式不正确, 请按规定格式! 例如: sys_demo");
+			tableName = "default_"+tableName;
+			strs = tableName.split("_");
+//			throw new RuntimeException("表名格式不正确, 请按规定格式! 例如: sys_demo");
 		}
 		return strs;
 	}

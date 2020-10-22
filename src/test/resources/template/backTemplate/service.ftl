@@ -16,5 +16,5 @@ public interface ${modelNameUpperCamel}Service extends Service<${modelNameUpperC
 	 * @param map
 	 * @return
 	 */
-	public List<Map<String,Object>> getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel});
+	public List<${modelNameUpperCamel}> getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel});
 }

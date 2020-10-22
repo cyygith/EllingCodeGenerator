@@ -20,7 +20,7 @@
     </#list>
   </resultMap>
   <!--根据自定义条件查询-->
-  <select id="getByCondition" resultMap="customerMap">
+  <select id="getByCondition" resultMap="BaseResultMap">
 	    SELECT
 			<include refid="BaseColumn"/>
 		FROM

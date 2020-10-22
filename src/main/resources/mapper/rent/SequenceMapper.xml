@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elling.rent.dao.mapper.SequenceMapper">
+  <resultMap id="BaseResultMap" type="com.elling.rent.model.Sequence">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="sequence_name" jdbcType="VARCHAR" property="sequenceName" />
+    <result column="current_value" jdbcType="BIGINT" property="currentValue" />
+    <result column="increment" jdbcType="INTEGER" property="increment" />
+    <result column="max_value" jdbcType="BIGINT" property="maxValue" />
+    <result column="initial_value" jdbcType="BIGINT" property="initialValue" />
+  </resultMap>
+</mapper>

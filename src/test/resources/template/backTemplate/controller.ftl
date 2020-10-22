@@ -113,18 +113,17 @@ public class ${modelNameUpperCamel}Controller {
     
     @RequestMapping("getByCondition")
     public Result getByCondition(${modelNameUpperCamel} ${modelNameLowerCamel}) {
-    	Map rMap = null;
     	try {
-    		List<Map<String,Object>> list = ${modelNameLowerCamel}Service.getByCondition(${modelNameLowerCamel});
+    		List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.getByCondition(${modelNameLowerCamel});
     		if(list!=null && list.size()>0) {
-    			rMap = list.get(0);
+    			${modelNameLowerCamel} = list.get(0);
     		}
     	}catch(Exception e) {
     		e.printStackTrace();
     		logger.error("操作异常",e);
     		return Result.error("内部出错："+e.getMessage());
     	}
-        return Result.success(rMap);
+        return Result.success(${modelNameLowerCamel});
     }
 
     @RequestMapping("list")
