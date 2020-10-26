@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import com.elling.common.utils.StringUtil;
+import com.elling.common.utils.DateUtil;
 import com.elling.common.entity.Result;
 
 import tk.mybatis.mapper.entity.Condition;
@@ -35,6 +36,7 @@ public class ${modelNameUpperCamel}Controller {
     @RequestMapping("add")
     public Result add(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
     	try {
+    		${modelNameLowerCamel}.setCreateTime(DateUtil.getNowTime());
 	        ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
 	    }catch(Exception e) {
     		e.printStackTrace();
@@ -72,6 +74,7 @@ public class ${modelNameUpperCamel}Controller {
     @RequestMapping("update")
     public Result update(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
     	try {
+    		${modelNameLowerCamel}.setUpdateTime(DateUtil.getNowTime());
 		    ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
 		}catch(Exception e) {
     		e.printStackTrace();
@@ -85,8 +88,10 @@ public class ${modelNameUpperCamel}Controller {
     public Result saveOrUpdate(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
     	try {
     		if(${modelNameLowerCamel}.getId()!=null) {
+    			${modelNameLowerCamel}.setUpdateTime(DateUtil.getNowTime());
     			rentHouseService.update(${modelNameLowerCamel});
     		}else {
+    			${modelNameLowerCamel}.setCreateTime(DateUtil.getNowTime());
     			rentHouseService.save(${modelNameLowerCamel});
     		}
 		    
