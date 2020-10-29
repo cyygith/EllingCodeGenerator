@@ -73,7 +73,6 @@ export default {
 <style lang="scss" scoped>
 @import '../common/commonstyle.css';
 .${sign}-panel{
-    background-color: grey;
     .c-item{
         display: flex;
         flex-direction: row;

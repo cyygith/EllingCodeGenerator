@@ -99,10 +99,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../../assets/css/custom-module/mobileCommon.css';
 .${sign}-panel{
-    background-color: grey;
     .c-item{
-        // display: flex;
-        // flex-direction: row;
         line-height: 2rem;
         width: 100%;
         padding: 1rem;
