@@ -89,10 +89,10 @@ public class ${modelNameUpperCamel}Controller {
     	try {
     		if(${modelNameLowerCamel}.getId()!=null) {
     			${modelNameLowerCamel}.setUpdateTime(DateUtil.getNowTime());
-    			rentHouseService.update(${modelNameLowerCamel});
+    			${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
     		}else {
     			${modelNameLowerCamel}.setCreateTime(DateUtil.getNowTime());
-    			rentHouseService.save(${modelNameLowerCamel});
+    			${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
     		}
 		    
 		}catch(Exception e) {

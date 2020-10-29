@@ -32,6 +32,6 @@
 		</where>
   </select>
   <sql id="BaseColumn">
-  		<#list colsEntityNoKey as result><#if (result_index+1)==(colsEntityNoKey?size)>${result.colunm}<#else>${result.colunm},</#if></#list>
+  		<#list colsEntityNoKey as result><#if (result_index+1)==(colsEntityNoKey?size)>T.${result.colunm}<#else>T.${result.colunm},</#if></#list>
   </sql>
 </mapper>
