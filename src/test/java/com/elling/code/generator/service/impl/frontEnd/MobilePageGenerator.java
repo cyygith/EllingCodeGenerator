@@ -163,6 +163,12 @@ public class MobilePageGenerator extends CodeManager implements ICode{
         	}else {
         		col.setDealType("text");
         	}
+        	
+        	//如果注视中含有字典，则显示为从后端字典值取数，如状态（字典）
+        	String comment = tMap.get("COLUMN_COMMENT")+"";
+        	if(comment.contains("字典")) {
+        		col.setDealType("select");
+        	}
 			
 			colList.add(col);
 		}
@@ -178,6 +184,14 @@ public class MobilePageGenerator extends CodeManager implements ICode{
 		data.put("colsEntity",colList);
 		
 		return data;
+	}
+	
+	public static void main(String[] args) {
+		String td = "状态（字典）";
+		System.out.println(td.contains("字典1"));
+		
+		
+		
 	}
 
 }

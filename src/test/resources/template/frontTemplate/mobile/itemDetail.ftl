@@ -5,10 +5,17 @@
         </div>
         <div class="content-panel">
         	<#list colsEntityNoKey as result><#--循环输出变量 start-->
+        	<#if result.dealType=='select'>
+        	<div class="c-item">
+        		<div class="cc-name">${result.comment}</div>
+        		<div class="cc-value" @click="toEdit('${result.colunm}',form.${result.colunm});">{{${result.colunm}Name}}<span class="ccc-span">></span></div>
+        	</div>
+        	<#else >
         	<div class="c-item">
                 <div class="cc-name">${result.comment}</div>
                 <div class="cc-value">{{form.${result.colunm}}}</div>
             </div>
+            </#if>
         	</#list>
         </div>
         <div class="foot-panel"> </div>
@@ -25,6 +32,11 @@ export default {
             	${result.colunm}:null,
             	</#list>
             },
+            <#list colsEntity as result>
+        	<#if result.dealType=='select'>
+        	${result.colunm}Name:{},//${result.comment}名称
+        	</#if>
+        	</#list>
         }
     },
     computed:{
@@ -55,6 +67,15 @@ export default {
                 if(res.code == "0"){
                     if(res.data){    
                         this.form = res.data;
+                        
+                        <#list colsEntity as result>
+			        	<#if result.dealType=='select'>
+			        	//${result.comment}
+			        	this.dictApi.getDictByType({"typeCode":this.dictApi.dict.typeCodeCd.${result.colunm}}).then((val)=>{
+			                this.${result.colunm}Name = val;
+			            });
+			        	</#if>
+			        	</#list>
                     }
                 }else{
                     this.$alert('获取信息失败，联系管理员','提示信息');
