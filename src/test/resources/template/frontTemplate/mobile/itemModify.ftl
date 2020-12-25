@@ -125,6 +125,8 @@ export default {
                     this.$alert('提交失败，请联系管理员处理','提示信息');
                 }
                 loading.close();
+            }).catch(error=>{
+                loading.close();
             });	
 
         },
